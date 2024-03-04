@@ -12,4 +12,15 @@ void *getfunction(char character)
     {NULL, NULL}
   };
   while (number < 3){
-    if (character == spec[number].specifier)
+    if (strcmp(spec[number].specifier, character) == 0)
+      {
+	return (spec[number].function);
+      }
+    else
+      {
+	number++;
+      }
+  }
+  return (0);
+}
+
