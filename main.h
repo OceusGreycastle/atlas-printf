@@ -6,7 +6,7 @@
 #include <stdarg.h>
 typedef struct specifier
 {
-  void *getfuntion(char character);
+  void *funtion(char character);
   char *specifier;
 } spec;
 
