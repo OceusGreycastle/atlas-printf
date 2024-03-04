@@ -4,11 +4,22 @@
  */
 int _printf(const char *format, ...)
 {
-  int num = 0;
-  while (format != NULL)
+  int length = 0, number = 0;
+  va_start string;
+  va_list(string, NULL);
+  while (format[length] != '\0')
     {
-      _putchar(format[num]);
-      num++;
+      if (format[length] == '%')
+	{
+	  length++;
+	  getfunction();
     }
-  return (0);
+  string = malloc(length * sizeof(char) - 1);
+  if (string == NULL)
+    {
+      return (0);
+    }
+  
+    
+  return (length);
 }
