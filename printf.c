@@ -5,22 +5,30 @@
 int _printf(const char *format, ...)
 {
   int length = 0;
+  char *string;
   va_list arguement;
   va_start(arguement, format);
-  while (format[length] != '\0')
+  string = malloc(length * sizeof(char) - 1);
+  if (string == NULL)
     {
-      if (format[length] == '%')
+      return (0);
+    }
+  while (*format != '\0')
+    {
+      string[length] = format[length];
+      if (string[length] == '%')
 	{
 	  length++;
-	  getfunction(format)(arguement);
+	  va_arg(arguement, int);
+	  getfunction(string[length]);
 	}
       else
 	{
-	  _putchar(format[length]);
+	  _putchar(string[length]);
 	}
-      length++;
     }
-  va_end arguement;
+  
+  va_end(arguement);
       
   return (length);
 }

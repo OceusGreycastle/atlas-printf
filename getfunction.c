@@ -2,24 +2,33 @@
 /*
  * getfunction - A function that grabs another function depending on specifier.
  */
-void (*getfunction(char *spe))(va_list)
+void (*getfunction(char spe))(va_list)
 {
   int number = 0;
-  spec spec[] = {
+  spec speca[] = {
     {'c', printchar},
     {'s', printstring},
     {'%', printmod},
     {'\0', shrug}
   };
   while (number < 3){
-    if (strcmp(spec[number].specifier, spe) == 0)
+    if (_strcmp(spe, speca[number].specifier) == 0)
       {
-	return (spec[number].funct);
+	return (speca[number].funct);
       }
     else
       {
 	number++;
       }
   }
-  return (spec[number].funct);
+  return (speca[number].funct);
+}
+
+int _strcmp(char a, char b)
+{
+  if (a == b)
+    {
+      return (0);
+    }
+  return (1);
 }
