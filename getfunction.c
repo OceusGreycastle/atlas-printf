@@ -1,26 +1,25 @@
-#include "head.h"
+#include "main.h"
 /*
- * getfunction - A function that grabs another function depending on conditions.
+ * getfunction - A function that grabs another function depending on specifier.
  */
-void *getfunction(char character)
+void (*getfunction(char *spe))(va_list)
 {
   int number = 0;
-  struct spec[] = {
+  spec spec[] = {
     {'c', printchar},
     {'s', printstring},
     {'%', printmod},
-    {NULL, NULL}
+    {'\0', shrug}
   };
   while (number < 3){
-    if (strcmp(spec[number].specifier, character) == 0)
+    if (strcmp(spec[number].specifier, spe) == 0)
       {
-	return (spec[number].function);
+	return (spec[number].funct);
       }
     else
       {
 	number++;
       }
   }
-  return (0);
+  return (spec[number].funct);
 }
-

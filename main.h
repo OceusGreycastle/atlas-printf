@@ -1,22 +1,23 @@
-#ifndef HEAD_H
-#define HEAD_H
+#ifndef MAIN_H
+#define MAIN_H
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <string.h>
 typedef struct specifier
 {
-  void *funtion(char character);
-  char *specifier;
+  const char specifier;
+  void (*funct)(va_list);
 } spec;
 
 int _printf(const char *format, ...);
 int _putchar(char c);
 char *storage(int number);
-void *getfunction(char character);
-char printchar(char character);
-char *printint(int number);
-char printmod(char character);
-char *printstring(char *string);
+void (*getfunction(char *specifier))(va_list);
+void printchar(va_list);
+void printstring(va_list);
+void printmod(va_list);
+void shrug(va_list);
 
 #endif

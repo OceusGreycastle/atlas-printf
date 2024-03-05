@@ -1,25 +1,26 @@
-#include "head.h"
+#include "main.h"
 /*
  * something?
  */
 int _printf(const char *format, ...)
 {
-  int length = 0, number = 0;
-  va_start string;
-  va_list(string, NULL);
+  int length = 0;
+  va_list arguement;
+  va_start(arguement, format);
   while (format[length] != '\0')
     {
       if (format[length] == '%')
 	{
 	  length++;
-	  getfunction();
+	  getfunction(format)(arguement);
+	}
+      else
+	{
+	  _putchar(format[length]);
+	}
+      length++;
     }
-  string = malloc(length * sizeof(char) - 1);
-  if (string == NULL)
-    {
-      return (0);
-    }
-  
-    
+  va_end arguement;
+      
   return (length);
 }
