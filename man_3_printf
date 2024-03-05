@@ -1,0 +1,8 @@
+Name
+    printf - prints out formatted inputs
+
+Synopsis
+    printf formatter [arguments ...]
+
+Description
+    
